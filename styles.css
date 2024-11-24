@@ -1,3 +1,4 @@
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
 }
@@ -11,7 +12,7 @@ header {
 }
 
 header .logo {
-    width: 100px;
+    width: 50px;
     height: auto;
     position: absolute;
     left: 10px;
@@ -43,7 +44,7 @@ input[type="text"], select {
 .producto {
     border: 1px solid #ddd;
     padding: 10px;
-    width: calc(20% - 20px);  /* Cambiado a 20% para cinco productos por fila */
+    width: calc(20% - 20px);  /* Para 5 productos por fila en pantallas grandes */
     box-sizing: border-box;
 }
 
@@ -54,4 +55,64 @@ input[type="text"], select {
 
 .producto h3 {
     margin: 10px 0;
+}
+
+/* Media Queries para dispositivos móviles */
+@media screen and (max-width: 768px) {
+    .producto {
+        width: calc(33.333% - 20px);  /* Para 3 productos por fila en pantallas medianas */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .producto {
+        width: calc(50% - 20px);  /* Para 2 productos por fila en pantallas pequeñas */
+    }
+
+    header .logo {
+        width: 30px;  /* Ajustar el tamaño del logo para pantallas pequeñas */
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .producto {
+        width: calc(100% - 20px);  /* Para 1 producto por fila en pantallas muy pequeñas */
+    }
+}
+
+
+#productos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;  /* Para centrar los productos en la pantalla */
+}
+
+.producto {
+    border: 1px solid #ddd;
+    padding: 10px;
+    flex: 1 1 calc(20% - 20px);  /* Ajusta según el tamaño de la pantalla */
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+    .producto {
+        flex: 1 1 calc(33.333% - 20px);  /* Para 3 productos por fila en pantallas medianas */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .producto {
+        flex: 1 1 calc(50% - 20px);  /* Para 2 productos por fila en pantallas pequeñas */
+    }
+
+    header .logo {
+        width: 30px;  /* Ajustar el tamaño del logo para pantallas pequeñas */
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .producto {
+        flex: 1 1 calc(100% - 20px);  /* Para 1 producto por fila en pantallas muy pequeñas */
+    }
 }
