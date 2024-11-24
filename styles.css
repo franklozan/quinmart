@@ -1,4 +1,3 @@
-/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
 }
@@ -39,60 +38,35 @@ input[type="text"], select {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    justify-content: center;
 }
 
 .producto {
     border: 1px solid #ddd;
     padding: 10px;
-    width: calc(20% - 20px);  /* Para 5 productos por fila en pantallas grandes */
+    flex: 1 1 calc(20% - 20px);  /* Para 5 productos por fila en pantallas grandes */
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .producto img {
     width: 100%;
     height: auto;
+    max-height: 150px;  /* Ajustar el tamaño máximo de la imagen */
+    object-fit: cover;  /* Ajustar la imagen para que encaje en el contenedor */
 }
 
 .producto h3 {
     margin: 10px 0;
+    font-size: 1.2em;
 }
 
-/* Media Queries para dispositivos móviles */
-@media screen and (max-width: 768px) {
-    .producto {
-        width: calc(33.333% - 20px);  /* Para 3 productos por fila en pantallas medianas */
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .producto {
-        width: calc(50% - 20px);  /* Para 2 productos por fila en pantallas pequeñas */
-    }
-
-    header .logo {
-        width: 30px;  /* Ajustar el tamaño del logo para pantallas pequeñas */
-    }
-}
-
-@media screen and (max-width: 320px) {
-    .producto {
-        width: calc(100% - 20px);  /* Para 1 producto por fila en pantallas muy pequeñas */
-    }
-}
-
-
-#productos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;  /* Para centrar los productos en la pantalla */
-}
-
-.producto {
-    border: 1px solid #ddd;
-    padding: 10px;
-    flex: 1 1 calc(20% - 20px);  /* Ajusta según el tamaño de la pantalla */
-    box-sizing: border-box;
+.producto p {
+    margin: 5px 0;
+    font-size: 1em;
 }
 
 @media screen and (max-width: 768px) {
@@ -109,6 +83,10 @@ input[type="text"], select {
     header .logo {
         width: 30px;  /* Ajustar el tamaño del logo para pantallas pequeñas */
     }
+
+    .producto h3, .producto p {
+        font-size: 0.9em;  /* Ajustar el tamaño del texto para pantallas pequeñas */
+    }
 }
 
 @media screen and (max-width: 320px) {
@@ -116,3 +94,4 @@ input[type="text"], select {
         flex: 1 1 calc(100% - 20px);  /* Para 1 producto por fila en pantallas muy pequeñas */
     }
 }
+
