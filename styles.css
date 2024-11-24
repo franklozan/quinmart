@@ -56,7 +56,7 @@ input[type="text"], select {
     width: 100%;
     height: auto;
     max-height: 150px;  /* Ajustar el tamaño máximo de la imagen */
-    object-fit: cover;  /* Ajustar la imagen para que encaje en el contenedor */
+    object-fit: cover;  /* Para mantener las proporciones de la imagen */
 }
 
 .producto h3 {
@@ -94,4 +94,3 @@ input[type="text"], select {
         flex: 1 1 calc(100% - 20px);  /* Para 1 producto por fila en pantallas muy pequeñas */
     }
 }
-

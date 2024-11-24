@@ -20,5 +20,41 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 18, name: '291', category: 'INCA KOLA', image: 'productos/291.jpeg', description: '3 L Paquete*4uni', price: 'S/. 39' }
         // Añade más productos aquí...
     ];
-
-    const searchInput = document.getElementById('search'); const categoryFilter = document.getElementById('categoryFilter'); const productosDiv = document.getElementById('productos'); const displayProductos = (productos) => { productosDiv.innerHTML = ''; productos.forEach(producto => { const productoDiv = document.createElement('div'); productoDiv.classList.add('producto'); productoDiv.innerHTML = ` <img src="${producto.image}" alt="${producto.name}"> <h3>${producto.name}</h3> <p>${producto.description}</p> <p>${producto.price}</p> <p>${producto.category}</p> `; productosDiv.appendChild(productoDiv); }); }; const filterProductos = () => { const searchTerm = searchInput.value.toLowerCase(); const selectedCategory = categoryFilter.value; const filteredProductos = productos.filter(producto => (producto.name.toLowerCase().includes(searchTerm) || producto.category.toLowerCase().includes(searchTerm)) && (selectedCategory === '' || producto.category === selectedCategory) ); displayProductos(filteredProductos); }; searchInput.addEventListener('input', filterProductos); categoryFilter.addEventListener('change', filterProductos); displayProductos(productos); });
+    
+        const searchInput = document.getElementById('search');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const productosDiv = document.getElementById('productos');
+    
+        const displayProductos = (productos) => {
+            productosDiv.innerHTML = '';
+            productos.forEach(producto => {
+                const productoDiv = document.createElement('div');
+                productoDiv.classList.add('producto');
+                productoDiv.innerHTML = `
+                    <img src="${producto.image}" alt="${producto.name}">
+                    <h3>${producto.name}</h3>
+                    <p>${producto.description}</p>
+                    <p>${producto.price}</p>
+                    <p>${producto.category}</p>
+                `;
+                productosDiv.appendChild(productoDiv);
+            });
+        };
+    
+        const filterProductos = () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedCategory = categoryFilter.value;
+            const filteredProductos = productos.filter(producto => 
+                (producto.name.toLowerCase().includes(searchTerm) || 
+                producto.category.toLowerCase().includes(searchTerm)) && 
+                (selectedCategory === '' || producto.category === selectedCategory)
+            );
+            displayProductos(filteredProductos);
+        };
+    
+        searchInput.addEventListener('input', filterProductos);
+        categoryFilter.addEventListener('change', filterProductos);
+    
+        displayProductos(productos);
+    });
+    
