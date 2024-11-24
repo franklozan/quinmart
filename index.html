@@ -1,29 +1,51 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quinmart</title>
-    <link rel="stylesheet" href="estilos.css">
+    <title>QuinMart</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Quinmart</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="catalogo.html">Catálogo</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
+        <img src="productos/logo.jpeg" alt="Logo QuinMart" class="logo">
+        <h1>Bienvenido a QuinMart</h1>
+        <a href="login.html" id="loginLink">Ingresar</a>
+        <a href="#" id="logoutLink" style="display:none;">Cerrar Sesión</a>
     </header>
-    <main>
-        <h2>Bienvenidos a Quinmart</h2>
-        <p>Tu distribuidora de confianza.</p>
+    <main id="mainContent" style="display:none;">
+        <h2>Catálogo de Productos</h2>
+        <input type="text" id="search" placeholder="Buscar productos...">
+        <select id="categoryFilter">
+            <option value="">Todas las categorías</option>
+            <option value="COCA COLA">COCA COLA</option>
+            <option value="INCA KOLA">INCA KOLA</option>
+            <!-- Añade más opciones de categorías aquí -->
+        </select>
+        <div id="productos"></div>
     </main>
-    <footer>
-        <p>&copy; 2024 Quinmart. Todos los derechos reservados.</p>
-    </footer>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const isLoggedIn = sessionStorage.getItem('loggedIn');
+            const loginLink = document.getElementById('loginLink');
+            const logoutLink = document.getElementById('logoutLink');
+            const mainContent = document.getElementById('mainContent');
+            
+            if (isLoggedIn) {
+                loginLink.style.display = 'none';
+                logoutLink.style.display = 'block';
+                mainContent.style.display = 'block';
+            } else {
+                alert('Debes iniciar sesión para ver el contenido.');
+                window.location.href = 'login.html';
+            }
+            
+            logoutLink.addEventListener('click', () => {
+                sessionStorage.removeItem('loggedIn');
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
 </body>
 </html>
